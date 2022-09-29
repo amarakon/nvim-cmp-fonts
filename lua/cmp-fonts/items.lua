@@ -1,51 +1,19 @@
-local fonts = {
-	{ label = "Century Schoolbook L" },
-	{ label = "Dingbats" },
-	{ label = "LateefGR" },
-	{ label = "Latin Modern Mono" },
-	{ label = "Latin Modern Mono Caps" },
-	{ label = "Latin Modern Mono Light" },
-	{ label = "Latin Modern Mono Light Cond" },
-	{ label = "Latin Modern Mono Prop" },
-	{ label = "Latin Modern Mono Prop Light" },
-	{ label = "Latin Modern Mono Slanted" },
-	{ label = "Latin Modern Roman" },
-	{ label = "Latin Modern Roman Caps" },
-	{ label = "Latin Modern Roman Demi" },
-	{ label = "Latin Modern Roman Dunhill" },
-	{ label = "Latin Modern Roman Slanted" },
-	{ label = "Latin Modern Roman Unslanted" },
-	{ label = "Latin Modern Sans" },
-	{ label = "Latin Modern Sans Demi Cond" },
-	{ label = "Liberation Mono" },
-	{ label = "Liberation Sans" },
-	{ label = "Liberation Serif" },
-	{ label = "Nerd Font Complete.ttf" },
-	{ label = "Nimbus Mono L" },
-	{ label = "Nimbus Roman No9 L" },
-	{ label = "Nimbus Sans L" },
-	{ label = "Noto Color Emoji" },
-	{ label = "Noto Emoji" },
-	{ label = "Noto Sans CJK HK" },
-	{ label = "Noto Sans CJK JP" },
-	{ label = "Noto Sans CJK KR" },
-	{ label = "Noto Sans CJK SC" },
-	{ label = "Noto Sans CJK TC" },
-	{ label = "Noto Sans Mono CJK HK" },
-	{ label = "Noto Sans Mono CJK JP" },
-	{ label = "Noto Sans Mono CJK KR" },
-	{ label = "Noto Sans Mono CJK SC" },
-	{ label = "Noto Sans Mono CJK TC" },
-	{ label = "Noto Serif CJK JP" },
-	{ label = "Noto Serif CJK KR" },
-	{ label = "Noto Serif CJK SC" },
-	{ label = "Noto Serif CJK TC" },
-	{ label = "Scheherazade New" },
-	{ label = "Standard Symbols L" },
-	{ label = "URW Bookman L" },
-	{ label = "URW Chancery L" },
-	{ label = "URW Gothic L" },
-	{ label = "URW Palladio L" },
-}
+local cmd = io.popen([[
+	fc-list | cut -d " " -f 2- | cut -d : -f 1 | cut -d , -f 1 | sort | uniq |
+		sed -z "$ s/\n$//"
+]])
 
-return fonts
+if cmd == nil then return end
+
+local fontstr = cmd:read("*a")
+
+local pos,fonttbl = 0,{}
+for i,v in function() return string.find(fontstr, "\n", pos, true) end do
+	table.insert(fonttbl, { label = string.sub(fontstr, pos, i - 1) })
+	pos = v + 1
+end
+table.insert(fonttbl, { label = string.sub(fontstr, pos) })
+
+cmd:close()
+
+return fonttbl

@@ -12,8 +12,8 @@ nvim-cmp-fonts
 nvim-cmp-fonts is a completion source for
 [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) that provides sources
 for fonts. It gets them from the fonts installed on your computer, which
-you can see by using the `fc-list` command. *Support for updating the
-font list every time you reopen Neovim is hopefully coming soon.*
+you can see by using the `fc-list` command. Every time you open Neovim,
+the list of fonts is updated.
 
 ## Installation
 
@@ -23,5 +23,5 @@ Otherwise, the source will not be made.
 ### [Packer](https://github.com/wbthomason/packer.nvim)
 
 ``` lua
-use { "amarakon/nvim-cmp-fonts", run = "./generate.sh" }
+use "amarakon/nvim-cmp-fonts"
 ```

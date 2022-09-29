@@ -1,10 +1,16 @@
-local main = {}
+local source = {}
 
-function main.setup()
-	vim.api.nvim_create_autocmd("VimEnter", { callback = function ()
-		--os.execute('cd "$(find ~ | grep "cmp-fonts/scripts" | head -1)" && ./generate.sh')
-		--vim.cmd("runtime cmp-fonts/lua/cmp-fonts/source.lua")
-	end })
+local items = require "cmp-fonts/items"
+
+function source.new() return setmetatable({}, { __index = source }) end
+function source.get_keyword_pattern() return "[A-Z][^[:blank:]]*" end
+
+source.complete = function(self, request, callback)
+	if not vim.regex(self.get_keyword_pattern() .. "$"):match_str(request.context.cursor_before_line) then
+		return callback()
+	end
+	if not self.items then self.items = items end
+	callback(self.items)
 end
 
-return main
+return source
