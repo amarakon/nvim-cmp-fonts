@@ -1,5 +1,5 @@
 local cmd = io.popen([[
-	fc-list | cut -d " " -f 2- | cut -d : -f 1 | cut -d , -f 1 | sort | uniq |
+	fc-list --format="%{family}\n" | cut -d , -f 1 | sort | uniq |
 		sed -z "$ s/\n$//"
 ]])
 
