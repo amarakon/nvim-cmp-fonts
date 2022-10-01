@@ -27,7 +27,22 @@ Otherwise, the source will not be made.
 ## [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
-use "amarakon/nvim-cmp-fonts"
+require "packer".startup(function(use) use "amarakon/nvim-cmp-fonts" end)
+```
+
+# Setup
+
+```lua
+require "cmp".setup { sources = { { name = "fonts" } } }
+```
+
+## Only for certain file types
+
+```lua
+-- Only enable `fonts` for `conf` and `config` file types
+require "cmp".setup.filetype(
+	{ "conf", "config" }, { sources = { { name = "fonts"} } }
+)
 ```
 
 # Issues

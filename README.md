@@ -8,6 +8,9 @@ nvim-cmp-fonts
 -   <a href="#dependencies" id="toc-dependencies">Dependencies</a>
 -   <a href="#installation" id="toc-installation">Installation</a>
     -   <a href="#packernvim" id="toc-packernvim"><span>packer.nvim</span></a>
+-   <a href="#setup" id="toc-setup">Setup</a>
+    -   <a href="#only-for-certain-file-types"
+        id="toc-only-for-certain-file-types">Only for certain file types</a>
 -   <a href="#issues" id="toc-issues">Issues</a>
 
 ## Preview
@@ -34,7 +37,22 @@ Otherwise, the source will not be made.
 ### [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ``` lua
-use "amarakon/nvim-cmp-fonts"
+require "packer".startup(function(use) use "amarakon/nvim-cmp-fonts" end)
+```
+
+## Setup
+
+``` lua
+require "cmp".setup { sources = { { name = "fonts" } } }
+```
+
+### Only for certain file types
+
+``` lua
+-- Only enable `fonts` for `conf` and `config` file types
+require "cmp".setup.filetype(
+    { "conf", "config" }, { sources = { { name = "fonts"} } }
+)
 ```
 
 ## Issues
