@@ -52,9 +52,8 @@ require "cmp".setup { sources = { { name = "fonts" } } }
 
 ``` lua
 -- Only enable `fonts` for `conf` and `config` file types
-require "cmp".setup.filetype(
-    { "conf", "config" }, { sources = { { name = "fonts"} } }
-)
+require "cmp".setup.filetype({ "conf", "config" },
+    { sources = { { name = "fonts"} } })
 ```
 
 ## Issues
