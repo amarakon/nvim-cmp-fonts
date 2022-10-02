@@ -21,9 +21,11 @@ nvim-cmp-fonts
 
 nvim-cmp-fonts is a completion source for
 [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) that provides sources
-for fonts. It gets them from the fonts installed on your computer, which
-you can see by using the `fc-list` command. Every time you open Neovim,
-the list of fonts is updated.
+for fonts. This is especially useful for editing
+[configuration](#only-for-certain-file-types) file types. It gets them
+from the fonts installed on your computer, which you can see by using
+the `fc-list` command. Every time you open Neovim, the list of fonts is
+updated.
 
 ## Dependencies
 
