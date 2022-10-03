@@ -3,7 +3,9 @@ local cmd = io.popen([[
 		sed -z "$ s/\n$//"
 ]])
 
-if cmd == nil then return end
+if cmd == nil then
+	return
+end
 
 local fontstr = cmd:read "*a"
 
