@@ -5,11 +5,11 @@ local cmd = io.popen([[
 
 if cmd == nil then return end
 
-local fontstr = cmd:read("*a")
+local fontstr = cmd:read "*a"
 
 local pos,fonttbl = 0,{}
-for i,v in function() return string.find(fontstr, "\n", pos, true) end do
-	table.insert(fonttbl, { label = string.sub(fontstr, pos, i - 1) })
+for i,v in function() return fontstr:find("\n", pos, true) end do
+	table.insert(fonttbl, { label = fontstr:sub(pos, i - 1) })
 	pos = v + 1
 end
 table.insert(fonttbl, { label = string.sub(fontstr, pos) })
