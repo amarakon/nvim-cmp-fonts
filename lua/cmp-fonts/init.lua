@@ -9,7 +9,7 @@ function source.get_keyword_pattern()
 end
 
 function source.complete(_, _, callback)
-	callback(require "cmp-fonts/items")
+	callback(require "cmp-fonts/complete")
 end
 
 return source
