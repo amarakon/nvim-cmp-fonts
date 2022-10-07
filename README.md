@@ -33,9 +33,6 @@ updated.
 
 ## Installation
 
-It is important to run the generate script after installing the plugin.
-Otherwise, the source will not be made.
-
 ### [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ``` lua
