@@ -14,7 +14,7 @@ nvim-cmp-fonts
 
 ## Preview
 
-![](media/preview.mkv)
+![](preview.mkv)
 
 ## Introduction
 

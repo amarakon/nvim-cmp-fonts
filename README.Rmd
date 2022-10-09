@@ -5,7 +5,7 @@ output: amaryaml::github
 
 # Preview
 
-![](media/preview.mkv)
+![](preview.mkv)
 
 # Introduction
 
