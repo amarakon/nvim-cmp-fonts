@@ -5,7 +5,7 @@ function source.new()
 end
 
 function source.get_keyword_pattern()
-	return "[A-Z][^[:blank:]]*"
+	return ".*"
 end
 
 function source.complete(_, _, callback)

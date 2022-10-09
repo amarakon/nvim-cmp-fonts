@@ -11,11 +11,10 @@ nvim-cmp-fonts
 -   <a href="#setup" id="toc-setup">Setup</a>
     -   <a href="#only-for-certain-file-types"
         id="toc-only-for-certain-file-types">Only for certain file types</a>
--   <a href="#issues" id="toc-issues">Issues</a>
 
 ## Preview
 
-![](media/preview.png)
+![](media/preview.mkv)
 
 ## Introduction
 
@@ -52,17 +51,3 @@ require "cmp".setup { sources = { { name = "fonts" } } }
 require "cmp".setup.filetype({ "conf", "config" },
     { sources = { { name = "fonts"} } })
 ```
-
-## Issues
-
--   nvim-cmp expects each item to be a single word, which means it will
-    not know if the word you are currently typing is a continuation of
-    the previous word. Therefore, the font completion is sometimes
-    inconsistent. This is an issue with nvim-cmp, not with my plugin.
-    Here is a preview:
-
-    ![](media/issue.gif)
-
--   This plugin depends on fontconfig. If you do not have it installed
-    on your system, it will not work. Maybe I can implement it without
-    fontconfig.
